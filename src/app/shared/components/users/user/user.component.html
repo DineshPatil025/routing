@@ -1,0 +1,24 @@
+<button class="btn btn-success"
+[routerLink]="['/users']"
+>Back</button>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>User Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{singleUserObj.userName}}</td>
+                <td>{{singleUserObj.userRole}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

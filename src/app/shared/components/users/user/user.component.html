@@ -1,24 +1,42 @@
-<button class="btn btn-success"
+<!-- <button class="btn btn-success"
 [routerLink]="['/users']"
->Back</button>
+>Back To Users</button> -->
 
 
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>User Name</th>
-                <th>User Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{singleUserObj.userName}}</td>
-                <td>{{singleUserObj.userRole}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3>Single User Details</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>User Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{singleUserObj.userName}}</td>
+                            <td>{{singleUserObj.userRole}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-right">
+                <button class="btn btn-primary"
+                [routerLink]="['edit']"
+              
+                (click)="onUserEdit()"
+                >Edit</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 
 
 

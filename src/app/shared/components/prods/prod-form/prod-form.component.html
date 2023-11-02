@@ -1,0 +1,28 @@
+<div class="conatiner">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <h2>{{inEditMode ?'update product' : 'Add new product' }}</h2>
+            <form [formGroup]="prodForm" (ngSubmit)="onNewProdAdd()">
+                <div class="form-group">
+                    <label for="pName">Product Name</label>
+                    <input type="text" class="form-control" id="pName" formControlName='pName'>
+                </div>
+                <div class="form-group">
+                    <label for="pStatus">Product Status</label>
+                    <select name="" class="form-control" id="pStatus" formControlName='pStatus'>
+                        <option value="pStatus" selected disabled>Select Status</option>
+                        <option value="inprogress">In Progress</option>
+                        <option value="dispatched">Dispatched</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                </div>
+                <div class="text-right">
+                    <button mat-raised-button color="primary" *ngIf="!inEditMode">Add Product</button>
+                    <button mat-raised-button color="accent" type="button" *ngIf="inEditMode"
+                    (click) ='onProdUpd()'
+                    >Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "./shared/components/page-not-found/page-n
 import { ProdComponent } from "./shared/components/prods/prod/prod.component";
 import { UserComponent } from "./shared/components/users/user/user.component";
 import { UserFormComponent } from "./shared/components/users/user-form/user-form.component";
+import { ProdFormComponent } from "./shared/components/prods/prod-form/prod-form.component";
 
 
 
@@ -19,12 +20,25 @@ const appRoute : Routes = [
     },
     {
         path: "prods",
-        component: ProdsComponent
+        component: ProdsComponent,
+        children : [
+            {
+                path: 'add-prod',
+                component:ProdFormComponent
+            },
+            {
+                path: ":prodsId",
+                component: ProdComponent
+            },
+            {
+                path: ":prodsId/edit",
+                component: ProdFormComponent
+            }
+        ]
+
     },
-    {
-        path: "prods/:prodsId",
-        component: ProdComponent
-    },
+   
+  
     {
         path: "users",
         component: UsersComponent,

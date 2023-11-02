@@ -1,23 +1,29 @@
+<button class="btn btn-success" [routerLink]="['/prods']">Back</button>
 
-<button class="btn btn-success"
-[routerLink]="['/prods']"
->Back</button>
-
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Product Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr >
-                <td>{{singleProd.pName}}</td>
-                <td>{{singleProd.pStatus}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{singleProd.pName}}</td>
+                            <td>{{singleProd.pStatus}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-right">
+                <button mat-raised-button color="primary"
+                [routerLink]="['edit']"
+                >Edit</button>
+            </div>
+        </div>
+    </div>
 </div>
-
-

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Iusers } from 'src/app/shared/models/products';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { UuidService } from 'src/app/shared/services/uuid.service';
 
@@ -24,7 +25,8 @@ export class UserFormComponent implements OnInit {
   private _uuidService = inject(UuidService);
   private _usersService = inject(UsersService);
   private _snackBar = inject(SnackbarService);
-  private _actRoute = inject(ActivatedRoute)
+  private _actRoute = inject(ActivatedRoute);
+  private _sweetalert = inject(SweetAlertService);
 
   constructor(private _route: Router) { }
 
@@ -50,6 +52,7 @@ export class UserFormComponent implements OnInit {
     if (this.userForm.valid) {
 
       this.newUserObj = { ...this.userForm.value, userId: this._uuidService.uuid() };
+      // this._sweetalert.swalSave();
       this._usersService.addNewUser(this.newUserObj)
       this.userForm.reset();
       this._snackBar.openSnackBar(`New user ${this.newUserObj.userName} added successfully`, 'close')
@@ -68,8 +71,6 @@ export class UserFormComponent implements OnInit {
       this._usersService.updateUser(updUser);
       this.userForm.reset();
       this._snackBar.openSnackBar(`User updated successfully`, 'close')
-
-
       this._route.navigate(['/users'])
 
     }

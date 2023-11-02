@@ -1,19 +1,17 @@
-
+<button type="button" mat-raised-button color="primary" class=" mb-3" 
+[routerLink]="['add-prod']">Add New Product</button>
 
 
 <div class="container">
- 
     <div class="row">
         <div class="col-md-4">
             <ul class="list-group">
-                <li class="list-group-item"
-               *ngFor="let product of productsArray"
-               [routerLink]="['/prods',product.pId]"
-                >{{product.pName}}</li>
+                <li class="list-group-item" *ngFor="let product of productsArray" [routerLink]="['/prods',product.pId]">
+                    {{product.pName}}</li>
             </ul>
         </div>
         <div class="col-md-8">
-
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

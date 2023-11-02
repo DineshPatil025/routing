@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Iproducts } from 'src/app/shared/models/products';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
 import { UuidService } from 'src/app/shared/services/uuid.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class ProdFormComponent implements OnInit {
   private _uuid = inject(UuidService);
   private _prodService = inject(ProductsService);
   private _snackbarService = inject(SnackbarService);
-  private _actroute = inject(ActivatedRoute)
+  private _actroute = inject(ActivatedRoute);
+  private _swal = inject(SweetAlertService)
 
   constructor(private _route: Router) { }
 
@@ -61,7 +63,7 @@ export class ProdFormComponent implements OnInit {
     }
     else {
       this._snackbarService.openSnackBar(`Add product name and status`, 'close')
-
+      this._swal.swalWarn()
     }
 
   }

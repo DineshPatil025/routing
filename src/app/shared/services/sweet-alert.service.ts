@@ -25,4 +25,12 @@ export class SweetAlertService {
     })
   }
 
+  swalWarn(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Update the details then click on submit or Add',
+      // footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
+
 }

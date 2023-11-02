@@ -59,7 +59,9 @@ export class UserFormComponent implements OnInit {
       this._route.navigate(['/users'])
     }
     else {
-      this._snackBar.openSnackBar('Add user name and role', 'close')
+      // this._snackBar.openSnackBar('Add user name and role', 'close')
+      this._sweetalert.swalWarn()
+
     }
   }
 

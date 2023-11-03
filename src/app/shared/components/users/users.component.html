@@ -1,20 +1,15 @@
-
-<button type="button" class="btn" mat-raised-button color="primary"
-[routerLink]="['add-user']"
->Add New User</button>
+<button type="button" class="btn" mat-raised-button color="primary" [routerLink]="['add-user']">Add New User</button>
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-4">
             <ul class="list-group">
-                <li class="list-group-item"
-                *ngFor="let user of usersArr"
-                [routerLink]="[user.userId]"
-                >{{user.userName}}</li>
+                <li class="list-group-item" *ngFor="let user of usersArr" [routerLink]="[user.userId]">{{user.userName}}
+                </li>
             </ul>
         </div>
-        
+
         <div class="col-md-8">
             <router-outlet></router-outlet>
         </div>

@@ -9,8 +9,6 @@ let matArr = [
   MatSnackBarModule
 
 ]
-
-
 @NgModule({
   declarations: [],
   imports: [

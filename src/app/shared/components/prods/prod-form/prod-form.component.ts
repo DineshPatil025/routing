@@ -33,13 +33,25 @@ export class ProdFormComponent implements OnInit {
   ngOnInit(): void {
     this.createProdForm()
 
+    this.patchProdForm()
+
+    this._actroute.queryParams.subscribe((param:Params) =>{
+      let canEditState = +param['canEdit']
+      console.log(canEditState);
+      if(!canEditState){
+        this.prodForm.disable();
+        this._snackbarService.openSnackBar('cannot edit the product as it is non returnable','close')
+      }
+    })
+  }
+
+  patchProdForm() {
     this._actroute.params.subscribe((param: Params) => {
       this.editId = param['prodsId']
       if (this.editId) {
         this.inEditMode = true;
         this.editProdObj = this._prodService.getSingleProd(this.editId);
         this.prodForm.patchValue(this.editProdObj)
-
       }
 
     })
@@ -54,12 +66,16 @@ export class ProdFormComponent implements OnInit {
 
   onNewProdAdd() {
     if (this.prodForm.valid) {
-      this.newProdObj = { ...this.prodForm.value, pId: this._uuid.uuid() };
+
+      let canReturn = Math.random() >0.3 ? 1 : 0;
+      console.log(canReturn);
+      
+      this.newProdObj = { ...this.prodForm.value, pId: this._uuid.uuid(), canReturn: canReturn };
       console.log(this.newProdObj);
       this._prodService.addNewProd(this.newProdObj)
       this._snackbarService.openSnackBar(`New Product ${this.newProdObj.pName} added succesfully`, 'close')
       this.prodForm.reset();
-      this._route.navigate(['/prods'])
+      this._route.navigate([`/prods/${this.newProdObj.pId}`])
     }
     else {
       this._snackbarService.openSnackBar(`Add product name and status`, 'close')
@@ -74,7 +90,7 @@ export class ProdFormComponent implements OnInit {
     this._prodService.updateSingleProd(this.updateProdObj)
     this.prodForm.reset();
     this._snackbarService.openSnackBar('Product Updated Succesfully', 'close')
-    this._route.navigate(['/prods'])
+    this._route.navigate([`/prods/${this.updateProdObj.pId}`])
 
   }
 

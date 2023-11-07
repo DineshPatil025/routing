@@ -8,8 +8,8 @@
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let product of productsArray"
                 
-                 [routerLink]="[product.pId]"
-                           (click) = getProdId()          
+                [routerLink]="[product.pId]"
+                [queryParams]="{canEdit: product.canReturn}"
                     [routerLinkActive]="'active'"
                     >
                     {{product.pName}}

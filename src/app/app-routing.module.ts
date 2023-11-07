@@ -46,6 +46,7 @@ const appRoute : Routes = [
     {
         path: "users",
         component: UsersComponent,
+        canActivate:[AuthGuardService],
         canActivateChild: [AuthGuardService],
 
         children: [

@@ -19,25 +19,18 @@ export class ProdsComponent implements OnInit {
   constructor(private _productService: ProductsService, private _actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
     this.productsArray = this._productService.getAllProducts()
-
     this._router.navigate(['prods/1'])
 
   }
 
   getProdId() {
-    console.log("li clicked");
 
-   
     this._actRoute.params.subscribe((param: Params) => {
       console.log(param);
       this.actProdId = param['prodsId']
     })
-
-
-
-
-
   }
 
 }

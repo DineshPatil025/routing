@@ -8,6 +8,7 @@ import { ProdComponent } from "./shared/components/prods/prod/prod.component";
 import { UserComponent } from "./shared/components/users/user/user.component";
 import { UserFormComponent } from "./shared/components/users/user-form/user-form.component";
 import { ProdFormComponent } from "./shared/components/prods/prod-form/prod-form.component";
+import { AuthGuardService } from "./shared/services/auth-guard.service";
 
 
 
@@ -18,9 +19,12 @@ const appRoute : Routes = [
         path: "",
         component : HomeComponent
     },
+   
     {
         path: "prods",
         component: ProdsComponent ,
+        canActivate:[AuthGuardService],
+
         children : [
             {
                 path: 'add-prod',
@@ -42,6 +46,8 @@ const appRoute : Routes = [
     {
         path: "users",
         component: UsersComponent,
+        canActivateChild: [AuthGuardService],
+
         children: [
             {
                 path:'add-user',

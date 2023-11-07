@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,7 @@
     </ul>
   </div>
   <div>
+    <span class="text-white mr-2" id="logInstatus">{{isLoggedIn? 'In log in state': 'login to check details'}}</span>
     <button mat-raised-button color="primary" class="mr-3" (click)="onLogIn()">Log In</button>
     <button mat-raised-button color="accent" (click)="onLogOut()">Sign Out</button>
   </div>

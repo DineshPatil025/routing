@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-
+  isLoggedIn !: boolean;
   private _router = inject(Router)
 
   constructor() { }
@@ -18,17 +18,19 @@ export class NavbarComponent implements OnInit {
   }
 
 
+
   onLogIn() {
     console.log('log in clicked');
     localStorage.setItem('token', 'token')
     this._router.navigate([""])
+    this.isLoggedIn = true;
 
   }
 
   onLogOut() {
     localStorage.removeItem('token')
     this._router.navigate([""])
-
+    this.isLoggedIn = false
   }
 
 }

@@ -38,9 +38,12 @@ export class ProdFormComponent implements OnInit {
     this._actroute.queryParams.subscribe((param:Params) =>{
       let canEditState = +param['canEdit']
       console.log(canEditState);
-      if(!canEditState){
+      
+      if(canEditState === 0){
         this.prodForm.disable();
         this._snackbarService.openSnackBar('cannot edit the product as it is non returnable','close')
+      }else{
+        this.prodForm.enable();
       }
     })
   }

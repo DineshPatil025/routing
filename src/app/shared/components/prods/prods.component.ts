@@ -28,16 +28,10 @@ export class ProdsComponent implements OnInit {
   getProdId() {
     console.log("li clicked");
 
-    // this.actProdId = this._actRoute.snapshot.params['prodsId']
-    // console.log(this._actRoute.snapshot.params);
-
-    // console.log(this.actProdId);
-
-    // this.isProdAcive = true;
+   
     this._actRoute.params.subscribe((param: Params) => {
       console.log(param);
       this.actProdId = param['prodsId']
-      console.log(this.actProdId);
     })
 
 

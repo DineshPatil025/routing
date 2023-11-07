@@ -9,8 +9,8 @@
                 <li class="list-group-item" *ngFor="let product of productsArray"
                 
                 [routerLink]="[product.pId]"
+                [routerLinkActive]="'active'"
                 [queryParams]="{canEdit: product.canReturn}"
-                    [routerLinkActive]="'active'"
                     >
                     {{product.pName}}
 

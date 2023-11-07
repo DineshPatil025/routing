@@ -5,7 +5,9 @@
     <div class="row">
         <div class="col-md-4">
             <ul class="list-group">
-                <li class="list-group-item" *ngFor="let user of usersArr" [routerLink]="[user.userId]">{{user.userName}}
+                <li class="list-group-item" *ngFor="let user of usersArr" [routerLink]="[user.userId]"
+                [routerLinkActive]="'active'"
+                >{{user.userName}}
                 </li>
             </ul>
         </div>

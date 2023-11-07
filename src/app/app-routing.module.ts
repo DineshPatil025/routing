@@ -20,7 +20,7 @@ const appRoute : Routes = [
     },
     {
         path: "prods",
-        component: ProdsComponent,
+        component: ProdsComponent ,
         children : [
             {
                 path: 'add-prod',

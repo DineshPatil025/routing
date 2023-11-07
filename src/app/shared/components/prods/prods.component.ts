@@ -14,18 +14,23 @@ export class ProdsComponent implements OnInit {
   isProdAcive: boolean = false;
   actProdId !: string;
   // private _actRoute = inject(ActivatedRoute)
+  private _router = inject(Router)
 
-  constructor(private _productService: ProductsService,  private _actRoute : ActivatedRoute) { }
+  constructor(private _productService: ProductsService, private _actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.productsArray = this._productService.getAllProducts()
+
+    this._router.navigate(['prods/1'])
 
   }
 
   getProdId() {
     console.log("li clicked");
 
-    // this.actProdId = this._actRoute.snapshot.params['pId']
+    // this.actProdId = this._actRoute.snapshot.params['prodsId']
+    // console.log(this._actRoute.snapshot.params);
+
     // console.log(this.actProdId);
 
     // this.isProdAcive = true;

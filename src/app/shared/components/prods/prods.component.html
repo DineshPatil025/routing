@@ -9,8 +9,8 @@
                 <li class="list-group-item" *ngFor="let product of productsArray"
                 
                  [routerLink]="[product.pId]"
-                    [ngClass]="{'active' : isProdAcive}"
-                    (click) = "getProdId()"
+                           (click) = getProdId()          
+                    [routerLinkActive]="'active'"
                     >
                     {{product.pName}}
 

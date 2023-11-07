@@ -17,6 +17,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersArr = this._userService.getAllUsers();
+    this._router.navigate(['users/1'])
+
 
   }
   toHome() {

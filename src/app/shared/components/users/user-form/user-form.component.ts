@@ -56,7 +56,7 @@ export class UserFormComponent implements OnInit {
       this._usersService.addNewUser(this.newUserObj)
       this.userForm.reset();
       this._snackBar.openSnackBar(`New user ${this.newUserObj.userName} added successfully`, 'close')
-      this._route.navigate(['/users'])
+      this._route.navigate([`/users/${this.newUserObj.userId}`])
     }
     else {
       // this._snackBar.openSnackBar('Add user name and role', 'close')
@@ -73,7 +73,7 @@ export class UserFormComponent implements OnInit {
       this._usersService.updateUser(updUser);
       this.userForm.reset();
       this._snackBar.openSnackBar(`User updated successfully`, 'close')
-      this._route.navigate(['/users'])
+      this._route.navigate([`/users/${this.userId}`])
 
     }
 

@@ -21,7 +21,7 @@ export class ProdsComponent implements OnInit {
   ngOnInit(): void {
     
     this.productsArray = this._productService.getAllProducts()
-    this._router.navigate(['prods/1'])
+    this._router.navigate(['home/prods/1'])
 
   }
 

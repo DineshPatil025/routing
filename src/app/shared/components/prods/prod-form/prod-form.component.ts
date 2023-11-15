@@ -40,7 +40,7 @@ export class ProdFormComponent implements OnInit {
       this.canEditState = +param['canEdit']
       console.log(this.canEditState);
 
-      if (this.canEditState && this.inEditMode) {
+      if (!this.canEditState && this.inEditMode) {
         this.prodForm.disable();
         this._snackbarService.openSnackBar('cannot edit the product as it is non returnable', 'close')
       } else {
@@ -70,16 +70,17 @@ export class ProdFormComponent implements OnInit {
 
   onNewProdAdd() {
     if (this.prodForm.valid) {
+      console.log("update clicked");
 
       let canReturn = Math.random() > 0.3 ? 1 : 0;
-      console.log(canReturn);
 
       this.newProdObj = { ...this.prodForm.value, pId: this._uuid.uuid(), canReturn: canReturn };
       console.log(this.newProdObj);
+
       this._prodService.addNewProd(this.newProdObj)
       this._snackbarService.openSnackBar(`New Product ${this.newProdObj.pName} added succesfully`, 'close')
       this.prodForm.reset();
-      this._route.navigate([`/prods/${this.newProdObj.pId}`])
+      this._route.navigate([`home/prods/${this.newProdObj.pId}`])
     }
     else {
       this._snackbarService.openSnackBar(`Add product name and status`, 'close')
@@ -91,15 +92,15 @@ export class ProdFormComponent implements OnInit {
   onProdUpd() {
 
     if (this.prodForm.valid && this.canEditState) {
-      console.log(this.canEditState);
-      
+
 
       this.updateProdObj = { ...this.prodForm.value, pId: this.editId };
       console.log(this.updateProdObj);
+
       this._prodService.updateSingleProd(this.updateProdObj)
       this.prodForm.reset();
       this._snackbarService.openSnackBar('Product Updated Succesfully', 'close')
-      this._route.navigate([`/prods/${this.updateProdObj.pId}`])
+      this._route.navigate([`home/prods/${this.newProdObj.pId}`])
     }
 
   }

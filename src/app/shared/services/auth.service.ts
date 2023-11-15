@@ -1,16 +1,16 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authService$: Subject<boolean> = new Subject();
-  authServiceAsObs = this.authService$.asObservable()
-  isLoggedIn !: boolean;
   loginStatus: boolean = false;
+  isLoggedIn !: boolean;
+  private authService$: BehaviorSubject<boolean> = new BehaviorSubject(this.isLoggedIn);
+  authServiceAsObs$ = this.authService$.asObservable()
   private _router = inject(Router)
 
 
@@ -22,9 +22,12 @@ export class AuthService {
       setTimeout(() => {
         if (localStorage.getItem('token')) {
           this.loginStatus = true
+          this.authService$.next(this.isLoggedIn);
 
         } else {
           this.loginStatus = false
+          this.authService$.next(this.isLoggedIn);
+
         }
         resolve(this.loginStatus)
       }, 100);
@@ -32,7 +35,6 @@ export class AuthService {
   }
 
   logIn() {
-    console.log('log in clicked');
     localStorage.setItem('token', 'token')
     this._router.navigate(["home"])
     this.isLoggedIn = true;

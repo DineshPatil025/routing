@@ -23,5 +23,4 @@ export class UserRoleGuard implements CanActivate {
       return urlTree
     }
   }
-
 }

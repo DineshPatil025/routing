@@ -9,6 +9,7 @@ import { UserComponent } from "./shared/components/users/user/user.component";
 import { UserFormComponent } from "./shared/components/users/user-form/user-form.component";
 import { ProdFormComponent } from "./shared/components/prods/prod-form/prod-form.component";
 import { AuthGuardService } from "./shared/services/auth-guard.service";
+import { AuthComponent } from "./shared/components/auth/auth.component";
 
 
 
@@ -17,11 +18,15 @@ import { AuthGuardService } from "./shared/services/auth-guard.service";
 const appRoute : Routes = [
     {
         path: "",
+        component : AuthComponent
+    },
+    {
+        path: "home",
         component : HomeComponent
     },
    
     {
-        path: "prods",
+        path: "home/prods",
         component: ProdsComponent ,
         canActivate:[AuthGuardService],
 

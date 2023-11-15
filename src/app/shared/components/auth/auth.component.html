@@ -1,0 +1,55 @@
+<div class="main ">
+    <div class="logInForm" *ngIf="!haveAcnt">
+        <div class="card authForm">
+            <div class="card-body">
+                <h3>Log In</h3>
+                <form [formGroup]="logInForm" (ngSubmit)="onLogIn()">
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Pasword</label>
+                        <input type="text" class="form-control" formControlName="password">
+                    </div>
+
+                    <div>
+                        <p>Dont Have Account? <a class="btn-link" (click)="haveAcnt = !haveAcnt">Click here</a>
+                            to Sign Up </p>
+                    </div>
+                    <div class="text-right">
+                        <button mat-raised-button color="primary" type="submit">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="SignUpForm" *ngIf="haveAcnt">
+        <div class="card authForm">
+            <div class="card-body">
+                <h2>Sign Up </h2>
+                <form [formGroup]="SignUpForm" (ngSubmit)="onLogIn()">
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Pasword</label>
+                        <input type="text" class="form-control" formControlName="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Confirmpassword">Confirm Password</label>
+                        <input type="text" class="form-control" formControlName="Confirmpassword">
+                    </div>
+                    <div>
+                        <p>Aleady Have Account? <a class="btn-link" (click)="haveAcnt = !haveAcnt">Click
+                                here</a> to Log In </p>
+                    </div>
+                    <div class="text-right">
+                        <button mat-raised-button color="primary" type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

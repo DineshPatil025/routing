@@ -58,7 +58,5 @@ export class ProductsService {
     this.productsArray[getIndex].pName = updateProdObj.pName;
     this.productsArray[getIndex].pStatus = updateProdObj.pStatus;
     console.log(this.productsArray);
-    
-
   }
 }

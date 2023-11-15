@@ -20,13 +20,14 @@ export class ProdFormComponent implements OnInit {
   editProdObj !: Iproducts
   editId !: string;
   updateProdObj !: Iproducts;
-
+  canEditState !: number;
 
   private _uuid = inject(UuidService);
   private _prodService = inject(ProductsService);
   private _snackbarService = inject(SnackbarService);
   private _actroute = inject(ActivatedRoute);
   private _swal = inject(SweetAlertService)
+
 
   constructor(private _route: Router) { }
 
@@ -35,14 +36,14 @@ export class ProdFormComponent implements OnInit {
 
     this.patchProdForm()
 
-    this._actroute.queryParams.subscribe((param:Params) =>{
-      let canEditState = +param['canEdit']
-      console.log(canEditState);
-      
-      if(canEditState && this.inEditMode){
+    this._actroute.queryParams.subscribe((param: Params) => {
+      this.canEditState = +param['canEdit']
+      console.log(this.canEditState);
+
+      if (this.canEditState && this.inEditMode) {
         this.prodForm.disable();
-        this._snackbarService.openSnackBar('cannot edit the product as it is non returnable','close')
-      }else{
+        this._snackbarService.openSnackBar('cannot edit the product as it is non returnable', 'close')
+      } else {
         this.prodForm.enable();
       }
     })
@@ -70,9 +71,9 @@ export class ProdFormComponent implements OnInit {
   onNewProdAdd() {
     if (this.prodForm.valid) {
 
-      let canReturn = Math.random() >0.3 ? 1 : 0;
+      let canReturn = Math.random() > 0.3 ? 1 : 0;
       console.log(canReturn);
-      
+
       this.newProdObj = { ...this.prodForm.value, pId: this._uuid.uuid(), canReturn: canReturn };
       console.log(this.newProdObj);
       this._prodService.addNewProd(this.newProdObj)
@@ -88,12 +89,18 @@ export class ProdFormComponent implements OnInit {
   }
 
   onProdUpd() {
-    this.updateProdObj = { ...this.prodForm.value, pId: this.editId };
-    console.log(this.updateProdObj);
-    this._prodService.updateSingleProd(this.updateProdObj)
-    this.prodForm.reset();
-    this._snackbarService.openSnackBar('Product Updated Succesfully', 'close')
-    this._route.navigate([`/prods/${this.updateProdObj.pId}`])
+
+    if (this.prodForm.valid && this.canEditState) {
+      console.log(this.canEditState);
+      
+
+      this.updateProdObj = { ...this.prodForm.value, pId: this.editId };
+      console.log(this.updateProdObj);
+      this._prodService.updateSingleProd(this.updateProdObj)
+      this.prodForm.reset();
+      this._snackbarService.openSnackBar('Product Updated Succesfully', 'close')
+      this._route.navigate([`/prods/${this.updateProdObj.pId}`])
+    }
 
   }
 

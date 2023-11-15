@@ -17,16 +17,13 @@ export class ProdComponent implements OnInit {
   constructor(private _prodsService: ProductsService, private _routing: ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    // this.prodId = this._routing.snapshot.params["prodsId"]
-    // this.singleProd = this._prodsService.getSingleProd(this.prodId)
     this._routing.params.subscribe((param: Params) => {
       this.prodId = param['prodsId']
+      console.log(this.prodId);
       
       this.singleProd = this._prodsService.getSingleProd(this.prodId)
-
+      
     })
-
   }
 
 

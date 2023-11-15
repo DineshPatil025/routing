@@ -9,12 +9,13 @@
                 <li class="list-group-item" *ngFor="let product of productsArray"
                 
                 [routerLink]="[product.pId]"
-                [routerLinkActive]="'active'"
                 [queryParams]="{canEdit: product.canReturn}"
+                [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{'exact' : false}"
+                
                     >
                     {{product.pName}}
 
-                </li>
             </ul>
         </div>
         <div class="col-md-8">

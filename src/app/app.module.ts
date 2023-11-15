@@ -15,6 +15,7 @@ import { UserFormComponent } from './shared/components/users/user-form/user-form
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
 import { ProdFormComponent } from './shared/components/prods/prod-form/prod-form.component';
+import { AuthComponent } from './shared/components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProdFormComponent } from './shared/components/prods/prod-form/prod-form
     UserComponent,
     UserFormComponent,
     ProdFormComponent,
+    AuthComponent,
     
   ],
   imports: [

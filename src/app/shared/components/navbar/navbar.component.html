@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isLoggedIn">
+  <a class="navbar-brand" routerLink="home">Navbar</a>
+  <button class="navbar-toggler" [ngClass]="{'collapsed' : !show}" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    [attr.aria-expanded]="show" (click)="show = !show" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -9,7 +9,7 @@
 
 
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" routerLink="">Home</a>
+        <a class="nav-link" routerLink="home">Home</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/prods">Products</a>
@@ -21,7 +21,7 @@
   </div>
   <div>
     <span class="text-white mr-2" id="logInstatus" [ngStyle]="{'background-color':isLoggedIn? 'green':'orangered'}">{{isLoggedIn? 'In log in state': 'login to check details'}}</span>
-    <button mat-raised-button color="primary" class="mr-3" (click)="onLogIn()">Log In</button>
+    <!-- <button mat-raised-button color="primary" class="mr-3" (click)="onLogIn()">Log In</button> -->
     <button mat-raised-button color="accent" (click)="onLogOut()">Sign Out</button>
   </div>
 </nav>

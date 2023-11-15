@@ -9,28 +9,24 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+
+  show: boolean = false;
   isLoggedIn !: boolean;
   private _router = inject(Router)
-
+  private _authService = inject(AuthService)
+  
   constructor() { }
 
   ngOnInit(): void {
-  }
 
-
-
-  onLogIn() {
-    console.log('log in clicked');
-    localStorage.setItem('token', 'token')
-    this._router.navigate([""])
-    this.isLoggedIn = true;
-
+    this._authService.authServiceAsObs.subscribe(res =>this.isLoggedIn = res )
   }
 
   onLogOut() {
-    localStorage.removeItem('token')
-    this._router.navigate([""])
-    this.isLoggedIn = false
+    this._authService.logOut();
+    this.isLoggedIn = false;
+    this._authService.authServiceAsObs.subscribe(res =>this.isLoggedIn = res )
+
   }
 
 }

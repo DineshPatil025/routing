@@ -18,7 +18,9 @@
                 </div>
                 <div class="text-right">
                     <button mat-raised-button color="primary" *ngIf="!inEditMode">Add Product</button>
-                    <button mat-raised-button color="accent" type="button" *ngIf="inEditMode"
+                    <button mat-raised-button color="accent" type="button" *ngIf="inEditMode "
+                    [disabled]="canEditState ===1"
+                   
                     (click) ='onProdUpd()'
                     >Update Product</button>
                 </div>

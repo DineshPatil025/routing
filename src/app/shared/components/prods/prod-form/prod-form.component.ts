@@ -98,9 +98,11 @@ export class ProdFormComponent implements OnInit {
       console.log(this.updateProdObj);
 
       this._prodService.updateSingleProd(this.updateProdObj)
+      console.log(this.newProdObj.pId);
+      
+      this._route.navigate([`home/prods/${this.newProdObj.pId}`])
       this.prodForm.reset();
       this._snackbarService.openSnackBar('Product Updated Succesfully', 'close')
-      this._route.navigate([`home/prods/${this.newProdObj.pId}`])
     }
 
   }

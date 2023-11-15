@@ -12,6 +12,8 @@ export class NavbarComponent implements OnInit {
 
   show: boolean = false;
   isLoggedIn !: boolean;
+  getUserRole !: string;
+  
   private _router = inject(Router)
   private _authService = inject(AuthService)
   
@@ -19,7 +21,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._authService.authServiceAsObs$.subscribe(res =>this.isLoggedIn = res )
+    this._authService.authServiceAsObs$.subscribe(res =>this.isLoggedIn = res );
+    this.getUserRole = localStorage.getItem("userRole")!;
+    console.log(this.getUserRole);
+    
   }
 
   onLogOut() {

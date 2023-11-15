@@ -40,8 +40,10 @@ export class AuthComponent implements OnInit {
     })
   }
   onLogIn(){
+  let userEmailObj = this.logInForm.value;
+  console.log(userEmailObj);
   
-    this._authService.logIn()
+    this._authService.logIn(userEmailObj)
   }
 
   

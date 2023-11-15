@@ -34,11 +34,26 @@ export class AuthService {
     })
   }
 
-  logIn() {
-    localStorage.setItem('token', 'token')
-    this._router.navigate(["home"])
-    this.isLoggedIn = true;
-    this.authService$.next(this.isLoggedIn);
+  logIn(userEmailObj: any) {
+
+    if (userEmailObj.email === "admin@admin.com") {
+      console.log("in if condition");
+
+      localStorage.setItem('token', 'token')
+      this._router.navigate(["home"])
+      this.isLoggedIn = true;
+      this.authService$.next(this.isLoggedIn);
+      localStorage.setItem("userRole", 'admin')
+
+    } else if (userEmailObj.email === "user@user.com") {
+      console.log("in else condition");
+      localStorage.setItem('token', 'token')
+      this._router.navigate(["home"])
+      this.isLoggedIn = true;
+      this.authService$.next(this.isLoggedIn);
+      localStorage.setItem("userRole", 'user')
+
+    }
 
   }
   logOut() {
@@ -46,6 +61,7 @@ export class AuthService {
     this._router.navigate([""])
     this.isLoggedIn = false
     this.authService$.next(this.isLoggedIn);
+    localStorage.removeItem("userRole")
 
   }
 

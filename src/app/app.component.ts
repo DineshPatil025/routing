@@ -2,6 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,10 +16,11 @@ export class AppComponent implements OnInit {
   private _router = inject(Router)
   private _authService = inject(AuthService)
   ngOnInit(): void {
-    // this._router.navigate([''])
+    this._router.navigate([''])
     this._authService.authServiceAsObs$.subscribe(res => this.isLoggedIn = res)
-    this._authService.logOut();
+    // this._authService.logOut();
   }
 
   title = 'routing';
+  
 }

@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
 
     this._authService.authServiceAsObs$.subscribe(res =>this.isLoggedIn = res );
     this.getUserRole = localStorage.getItem("userRole")!;
-    console.log(this.getUserRole);
     
   }
 

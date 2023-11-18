@@ -23,11 +23,9 @@ export class AuthService {
         if (localStorage.getItem('token')) {
           this.loginStatus = true
           this.authService$.next(this.isLoggedIn);
-
         } else {
           this.loginStatus = false
           this.authService$.next(this.isLoggedIn);
-
         }
         resolve(this.loginStatus)
       }, 100);
@@ -37,7 +35,6 @@ export class AuthService {
   logIn(userEmailObj: any) {
 
     if (userEmailObj.email === "admin@admin.com") {
-      console.log("in if condition");
 
       localStorage.setItem('token', 'token')
       this._router.navigate(["home"])
@@ -46,7 +43,6 @@ export class AuthService {
       localStorage.setItem("userRole", 'admin')
 
     } else if (userEmailObj.email === "user@user.com") {
-      console.log("in else condition");
       localStorage.setItem('token', 'token')
       this._router.navigate(["home"])
       this.isLoggedIn = true;

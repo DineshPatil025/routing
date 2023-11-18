@@ -27,17 +27,17 @@ const appRoute: Routes = [
         component: HomeComponent,
         title: "Home",
         data: {
-            userRole:['admin','user']
+            userRole: ['admin', 'user']
         }
     },
 
     {
         path: "home/prods",
         component: ProdsComponent,
-        canActivate: [AuthGuardService,UserRoleGuard],
+        canActivate: [AuthGuardService, UserRoleGuard],
         title: "Products",
         data: {
-            userRole:['admin']
+            userRole: ['admin']
         },
         children: [
             {
@@ -55,24 +55,22 @@ const appRoute: Routes = [
                 title: "Edit Prod"
             }
         ]
-
     },
-
 
     {
         path: "users",
         component: UsersComponent,
-        canActivate: [AuthGuardService,UserRoleGuard],
+        canActivate: [AuthGuardService, UserRoleGuard],
         data: {
-            userRole:['admin','user']
+            userRole: ['admin', 'user']
         },
-      
+
         title: "Users",
         children: [
             {
                 path: 'add-user',
                 component: UserFormComponent,
-                title : "Add User",
+                title: "Users-Add User",
             },
             {
                 path: ":userId",
@@ -83,7 +81,7 @@ const appRoute: Routes = [
             {
                 path: ":userId/edit",
                 component: UserFormComponent,
-                title: "Edit User",
+                title: "User-Edit User",
             }
         ]
     },

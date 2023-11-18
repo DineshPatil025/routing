@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this._router.navigate([''])
     this._authService.authServiceAsObs$.subscribe(res => this.isLoggedIn = res)
+  
+    
     // this._authService.logOut();
   }
 
